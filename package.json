@@ -21,11 +21,29 @@
     "cz-conventional-changelog": "^2.1.0",
     "eslint": "^4.17.0",
     "eslint-config-prettier": "^2.9.0",
+    "husky": "^0.15.0-rc.8",
+    "lint-staged": "^6.1.0",
     "prettier": "1.10.2"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

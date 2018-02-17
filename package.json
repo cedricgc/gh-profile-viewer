@@ -1,6 +1,7 @@
 {
   "name": "gh-profile-viewer",
   "version": "0.1.0",
+  "private": true,
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",

@@ -8,5 +8,5 @@ RUN yarn install && \
 FROM node:8.9-alpine
 WORKDIR /app
 COPY --from=build /src/build .
-RUN yarn global add serve
+RUN yarn global add serve@6.4.10
 CMD ["serve", "--single", "--port", "80", "/app"]

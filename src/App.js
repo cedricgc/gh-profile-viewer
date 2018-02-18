@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserForm from './UserForm';
+import ProfileView from './ProfileView';
 
 import './App.css';
 
@@ -21,6 +22,7 @@ class App extends Component {
       <div className="App">
         <h1>Github Profile Viewer</h1>
         <UserForm onUsernameSubmit={this.handleUsernameSubmit} />
+        <ProfileView username={this.state.username} />
       </div>
     );
   }

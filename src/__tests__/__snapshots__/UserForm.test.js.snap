@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component matches snapshot 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <h2>
+      Input the Github user to display
+    </h2>
+    <section>
+      <div>
+        <label>
+          <span>
+            Username: 
+          </span>
+          <input
+            data-test-id="username"
+            id="username"
+            name="username"
+            onChange={[Function]}
+            type="text"
+          />
+        </label>
+        <input
+          type="submit"
+          value="submit"
+        />
+      </div>
+    </section>
+  </form>
+</div>
+`;

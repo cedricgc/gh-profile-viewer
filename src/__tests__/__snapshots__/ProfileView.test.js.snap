@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component matches snapshot 1`] = `
+<div
+  data-test-id="profile-container"
+  id="gh-profile"
+>
+  <h2>
+    Github Profile: 
+    user
+  </h2>
+</div>
+`;

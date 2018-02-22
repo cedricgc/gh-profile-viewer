@@ -21,25 +21,35 @@ class ProfileView extends Component {
 
     return (
       <div id="gh-profile" data-test-id="profile-container">
-        <h2>Github Profile: {this.props.username}</h2>
-        <div>
-          <Query query={GET_USER}>
-            {({ loading, error, data }) => {
-              if (loading) {
-                return <div>Loading...</div>;
-              }
-              if (error) {
-                return (
-                  <div>
+        <Query query={GET_USER}>
+          {({ loading, error, data }) => {
+            if (loading) {
+              return (
+                <div>
+                  <span>Loading...</span>
+                </div>
+              );
+            }
+            if (error) {
+              return (
+                <div>
+                  <span>
                     Error: Unable to load user {`${this.props.username}`}
-                  </div>
-                );
-              }
+                  </span>
+                </div>
+              );
+            }
 
-              return <div>Github ID: {data.user.id}</div>;
-            }}
-          </Query>
-        </div>
+            return (
+              <div>
+                <h2>Github Profile: {this.props.username}</h2>
+                <div>
+                  <span>Github ID: {data.user.id}</span>
+                </div>
+              </div>
+            );
+          }}
+        </Query>
       </div>
     );
   }

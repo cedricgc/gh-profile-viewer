@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { gql } from 'apollo-boost';
+import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 class ProfileView extends Component {

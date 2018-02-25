@@ -1,21 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component matches snapshot 1`] = `
+exports[`component matches snapshot when an error occurs 1`] = `
 <div
   data-test-id="profile-container"
   id="gh-profile"
 >
   <div>
     <h2>
-      Github Profile: 
-      user
+      Error: Unable to load user 
+      error_user
     </h2>
+  </div>
+</div>
+`;
+
+exports[`component matches snapshot when loading 1`] = `
+<div
+  data-test-id="profile-container"
+  id="gh-profile"
+>
+  <div>
+    <h2>
+      Loading...
+    </h2>
+  </div>
+</div>
+`;
+
+exports[`component matches snapshot with a user 1`] = `
+<div
+  data-test-id="profile-container"
+  id="gh-profile"
+>
+  <div>
     <div>
-      <span>
-        Github ID: 
-        IDXXXX
-      </span>
+      <h2>
+        Github Profile: 
+        user
+      </h2>
+      <div>
+        <span>
+          Github ID: 
+          IDUSER
+        </span>
+      </div>
     </div>
   </div>
 </div>
 `;
+
+exports[`component matches snapshot with no user 1`] = `null`;

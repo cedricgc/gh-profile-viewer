@@ -6,15 +6,17 @@ exports[`component matches snapshot 1`] = `
   id="gh-profile"
 >
   <div>
-    <h2>
-      Github Profile: 
-      user
-    </h2>
     <div>
-      <span>
-        Github ID: 
-        IDXXXX
-      </span>
+      <h2>
+        Github Profile: 
+        user
+      </h2>
+      <div>
+        <span>
+          Github ID: 
+          IDXXXX
+        </span>
+      </div>
     </div>
   </div>
 </div>

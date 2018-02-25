@@ -21,33 +21,25 @@ export function ProfileView({ username, data }) {
   // Unpack after username check as data can be null if query is skipped.
   const { user, loading, error } = data;
 
+  let content;
+  if (loading) {
+    content = <h2>Loading...</h2>;
+  } else if (error) {
+    content = <h2>Error: Unable to load user {username}</h2>;
+  } else {
+    content = (
+      <div>
+        <h2>Github Profile: {username}</h2>
+        <div>
+          <span>Github ID: {user.id}</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div id="gh-profile" data-test-id="profile-container">
-      {(() => {
-        if (loading) {
-          return (
-            <div>
-              <h2>Loading...</h2>
-            </div>
-          );
-        }
-        if (error) {
-          return (
-            <div>
-              <h2>Error: Unable to load user {username}</h2>
-            </div>
-          );
-        }
-
-        return (
-          <div>
-            <h2>Github Profile: {username}</h2>
-            <div>
-              <span>Github ID: {user.id}</span>
-            </div>
-          </div>
-        );
-      })()}
+      <div>{content}</div>
     </div>
   );
 }

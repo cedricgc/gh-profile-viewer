@@ -49,5 +49,4 @@ export function ProfileView({ username, data: { user, loading, error } }) {
   );
 }
 
-const Wrapper = graphql(getUser)(ProfileView);
-export default Wrapper;
+export default graphql(getUser)(ProfileView);

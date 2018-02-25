@@ -1,58 +1,53 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
+import { graphql } from 'react-apollo';
 
-class ProfileView extends Component {
-  render() {
-    if (this.props.username === '') {
-      return null;
+const getUser = gql`
+  query getUser($username: String!) {
+    user(login: $username) {
+      id
+      name
+      url
     }
-
-    const GET_USER = gql`
-      query {
-        user(login: "${this.props.username}") {
-          id
-          name
-          url
-        }
-      }
-    `;
-
-    return (
-      <div id="gh-profile" data-test-id="profile-container">
-        <Query query={GET_USER}>
-          {({ loading, error, data }) => {
-            if (loading) {
-              return (
-                <div>
-                  <span>Loading...</span>
-                </div>
-              );
-            }
-            if (error) {
-              return (
-                <div>
-                  <span>
-                    Error: Unable to load user {`${this.props.username}`}
-                  </span>
-                </div>
-              );
-            }
-
-            return (
-              <div>
-                <h2>Github Profile: {this.props.username}</h2>
-                <div>
-                  <span>Github ID: {data.user.id}</span>
-                </div>
-              </div>
-            );
-          }}
-        </Query>
-      </div>
-    );
   }
+`;
+
+export function ProfileView({ username, data: { user, loading, error } }) {
+  if (username === '') {
+    return null;
+  }
+
+  return (
+    <div id="gh-profile" data-test-id="profile-container">
+      {(() => {
+        if (loading) {
+          return (
+            <div>
+              <h2>Loading...</h2>
+            </div>
+          );
+        }
+        if (error) {
+          return (
+            <div>
+              <h2>Error: Unable to load user {username}</h2>
+            </div>
+          );
+        }
+
+        return (
+          <div>
+            <h2>Github Profile: {username}</h2>
+            <div>
+              <span>Github ID: {user.id}</span>
+            </div>
+          </div>
+        );
+      })()}
+    </div>
+  );
 }
 
-export default ProfileView;
+const Wrapper = graphql(getUser)(ProfileView);
+export default Wrapper;

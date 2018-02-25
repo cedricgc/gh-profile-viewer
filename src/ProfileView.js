@@ -13,10 +13,13 @@ const getUser = gql`
   }
 `;
 
-export function ProfileView({ username, data: { user, loading, error } }) {
+export function ProfileView({ username, data }) {
   if (username === '') {
     return null;
   }
+
+  // Unpack after username check as data can be null if query is skipped.
+  const { user, loading, error } = data;
 
   return (
     <div id="gh-profile" data-test-id="profile-container">
@@ -49,4 +52,7 @@ export function ProfileView({ username, data: { user, loading, error } }) {
   );
 }
 
-export default graphql(getUser)(ProfileView);
+export default graphql(getUser, {
+  // Skip network request on initial state
+  skip: (ownprops) => ownprops.username === '',
+})(ProfileView);

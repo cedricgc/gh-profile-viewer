@@ -82,6 +82,7 @@
   },
   "lint-staged": {
     "*.js": [
+      "jest --bail --findRelatedTests --env jsdom",
       "prettier --write",
       "git add"
     ],
